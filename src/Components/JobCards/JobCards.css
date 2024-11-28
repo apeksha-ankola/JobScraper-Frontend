@@ -1,0 +1,65 @@
+/* Centering the job cards container */
+.job-cards-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+/* Grid Layout for Job Cards */
+.job-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 1.5rem; 
+  width: 90%; 
+  max-width: 1200px; 
+  padding: 1rem;
+}
+
+/* Individual Job Card Styling */
+.job-card {
+  background: linear-gradient(145deg, #f0f0f0, #ffffff); 
+  border: 1px solid #ddd; 
+  border-radius: 12px; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  overflow: hidden; 
+}
+
+/* Hover Effects */
+.job-card:hover {
+  transform: scale(1.05); 
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); 
+  background: linear-gradient(145deg, #e0e0e0, #f9f9f9); 
+}
+
+/* Job Title Styling */
+.job-card h3 {
+  font-size: 1.4rem;
+  color: #0033cc;
+  margin-bottom: 0.5rem;
+  text-transform: capitalize; 
+}
+
+/* Job Details */
+.job-card p {
+  font-size: 1rem;
+  color: #444; 
+  margin: 0.3rem 0;
+  line-height: 1.5;
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .job-cards-grid {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 576px) {
+  .job-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

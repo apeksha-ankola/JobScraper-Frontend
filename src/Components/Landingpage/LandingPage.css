@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #002194; 
+}
+
+.landing-page {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .search-container h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #002194; 
+  }
+  
+  .search-bar {
+    width: 60%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 1px solid #002194;
+    border-radius: 10px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  button {
+    background: #002194;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  button:hover {
+    background: #0042A8;
+    transform: scale(1.05);
+  }
+  
