@@ -1,0 +1,132 @@
+/* Reset and ensure full height of the page */
+body, html {
+    margin: auto;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* About Page Container */
+.about-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the page takes up the full viewport height */
+}
+
+/* About Section */
+.about-container {
+    flex: 1; /* This ensures the footer is pushed to the bottom if content is insufficient */
+    width: 100%;
+    padding: 4rem 2rem;
+    background-color: #D4EBF8; /* Light Blue Background */
+    text-align: center;
+    font-family: "Arial", sans-serif;
+}
+
+.about-container h1 {
+    font-size: 2.5rem;
+    color: #1F509A; /* Darker Blue */
+    
+}
+
+.about-container p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #0A3981; /* Deep Blue */
+    margin-bottom: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-container strong {
+    color: #E38E49; /* Accent Orange */
+}
+
+/* Footer Section */
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0; /* Remove gaps on the sides */
+    padding: 14rem 0 9rem 0;
+    background-color: #1F509A; /* Darker Blue */
+    color: #ffffff;
+    text-align: center;
+    padding-top: 9rem;
+}
+
+.footer-about {
+    margin: auto;
+    padding-bottom: 2rem;
+}
+
+footer h3 {
+    color: #E38E49; /* Accent Orange */
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+footer p {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-bottom--section {
+    padding-top: 2rem;
+}
+
+.footer-bottom--section hr {
+    border: none;
+    border-top: 1px solid #ffffff;
+    margin: 1.5rem auto;
+    max-width: 800px;
+}
+
+.privacy-terms {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.privacy-terms p {
+    margin: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #E38E49; /* Accent Orange */
+}
+
+/* Footer should stick to the bottom, even if the content is short */
+footer {
+    position: relative; /* Keep it in normal flow */
+    bottom: 0;  /* Ensures it sticks to the bottom when necessary */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-container {
+        padding: 2rem 1rem;
+    }
+
+    .about-container h1 {
+        font-size: 2rem;
+    }
+
+    .about-container p {
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 2rem 1rem;
+    }
+
+    footer h3 {
+        font-size: 1.75rem;
+    }
+
+    .footer-about {
+        padding-bottom: 1.5rem;
+    }
+}

@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import Navbar from "./Components/Navbar/Navbar";
 import LandingPage from "./Components/Landingpage/LandingPage";
+import About from "./Components/About/About";
 import "./App.css";
 import logo from "./Components/Images/no-bg.png"
+import { BrowserRouter as Router } from "react-router-dom";
+
 
 const App = () => {
   const [view, setView] = useState("home");
 
   return (
+    <Router>
     <div className="app">
       <Navbar />
 
@@ -44,10 +48,10 @@ const App = () => {
 
       {/* About Us Section */}
       <div id="about" className="section">
-        <h1>About Us</h1>
-        <p>Learn more about our mission and values.</p>
+        <About />
       </div>
     </div>
+    </Router>
   );
 };
 
