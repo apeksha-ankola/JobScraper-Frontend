@@ -1,0 +1,11 @@
+.company-carousel {
+  margin: 2rem 0;
+  padding: 2rem;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  max-width: 150px; /* Adjust size of logos */
+  object-fit: contain;
+}
