@@ -10,7 +10,7 @@ const CompanyCarousel = () => {
     "https://upload.wikimedia.org/wikipedia/commons/1/1c/Accenture_logo.svg",
     "https://companieslogo.com/img/orig/MPHASIS.NS_BIG-96e12b36.png?t=1720244492",
     "https://www.connectwise.com/globalassets/media/logos/company-logos/mdtm/connectwise-horiz-master.png",
-    "https://www.zuora.com/wp-content/uploads/2024/03/tcs-p-c.png",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Tata_Consultancy_Services_Logo.svg/2560px-Tata_Consultancy_Services_Logo.svg.png",
     "https://www.ltimindtree.com/wp-content/uploads/2022/10/LTIMindtree_Linear_2-1-LT-Blue-1-1.png",
     "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Cognizant_logo_2022.svg/2560px-Cognizant_logo_2022.svg.png"
     // Add more logos as needed

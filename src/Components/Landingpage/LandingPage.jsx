@@ -71,4 +71,3 @@ const LandingPage = ({ setView }) => {
 };
 
 export default LandingPage;
-
