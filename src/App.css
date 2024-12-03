@@ -20,6 +20,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .cardsection {
@@ -48,7 +49,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 3rem;
-  border-bottom: 5px solid #1F509A; /* Border color */
+  border-bottom: 5px solid #1F509A; 
 }
 
 .home-content {
@@ -59,12 +60,12 @@ body {
 
 .home-content h1 {
   font-size: 3rem;
-  color: #0A3981; /* Dark blue for header */
+  color: #0A3981; 
 }
 
 .home-content p {
   font-size: 1.5rem;
-  color: #ffffff; /* White text for description */
+  color: #ffffff; 
 }
 
 .home-logo {
@@ -140,6 +141,63 @@ body {
   transform: scale(1.05);
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-section {
+    flex-direction: column; /* Stack items vertically */
+    text-align: center;
+  }
+
+  .home-content {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .home-content h1 {
+    font-size: 2rem;
+  }
+
+  .home-content p {
+    font-size: 1.2rem;
+  }
+
+  .home-logo {
+    margin: 1rem 0;
+  }
+
+  .search-container {
+    flex-direction: column; /* Stack search bar and buttons */
+    align-items: center;
+  }
+
+  .search-bar {
+    max-width: 100%; /* Make the search bar fill the width */
+  }
+
+  .button-group {
+    justify-content: center;
+  }
+
+  .scrape-btn {
+    width: 100%; /* Make buttons full-width */
+    max-width: 200px; /* Limit width for small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .home-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-content p {
+    font-size: 1rem;
+  }
+
+  .animated-logo {
+    width: 200px;
+  }
+}
+
 /* Background Animation */
 body::before {
   content: "";
@@ -165,3 +223,4 @@ body::before {
     background-position: 0% 50%;
   }
 }
+
