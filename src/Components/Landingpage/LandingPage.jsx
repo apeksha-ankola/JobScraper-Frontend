@@ -2,32 +2,153 @@ import React, { useState } from "react";
 import JobCards from "../JobCards/JobCards";
 import "./LandingPage.css";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
+import axios from "axios";
 
 const LandingPage = ({ setView }) => {
   const [loading, setLoading] = useState(false);
   const [jobs, setJobs] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const fetchJobs = (type) => {
+  // Function to handle generating cover letter
+  const handleGenerateCoverLetter = async (job) => {
+    const payload = {
+      name:"Ayaj Anand",
+      job_position: job.title,
+      company_name: job.company,
+    };
+  
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/generate-cover-letter",
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          responseType: "blob", // Ensures we receive the file as a Blob
+        }
+      );
+  
+      // Create a blob URL for the PDF
+      const blob = new Blob([response.data], { type: "application/pdf" });
+      const url = window.URL.createObjectURL(blob);
+  
+      // Open the blob URL in a new tab
+      window.open(url, "_blank");
+    } catch (error) {
+      console.error("Error generating cover letter:", error);
+      alert("Failed to generate cover letter. Please try again.");
+    }
+  };
+
+  const handleGenerateResume = async (job) => {
+    const payload = {
+      name:"Ayaj Anand",
+      job_position: job.title,
+      company_name: job.company,
+    };
+  
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/generate-resume",
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          responseType: "blob", // Ensures we receive the file as a Blob
+        }
+      );
+  
+      // Create a blob URL for the PDF
+      const blob = new Blob([response.data], { type: "application/pdf" });
+      const url = window.URL.createObjectURL(blob);
+  
+      // Open the blob URL in a new tab
+      window.open(url, "_blank");
+    } catch (error) {
+      console.error("Error generating Resume:", error);
+      alert("Failed to generate cover letter. Please try again.");
+    }
+  };
+
+  const fetchJobs = async (type) => {
     setLoading(true);
     setView("loading");
-    setTimeout(() => {
-      const mockJobs = [
-        { title: "Frontend Developer", company: "ABC Inc.", location: "NYC" },
-        { title: "Intern - Data Science", company: "XYZ Ltd.", location: "Remote" },
-        { title: "Backend Engineer", company: "123 Tech", location: "SF" },
-        { title: "Marketing Intern", company: "Marketing Pro", location: "Remote" },
-        { title: "UX Designer", company: "Designify", location: "LA" },
-        { title: "AI Engineer", company: "Innovate AI", location: "Seattle" },
-      ];
 
-      setJobs(mockJobs);
+    try {
+      const encodedType = encodeURIComponent(type);
+      const apiUrl = `http://127.0.0.1:5000/jobs?search=${encodedType}`;
+      const token = "da_anandz"; // Replace with your actual token if needed
+
+      const response = await axios.get(apiUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const jobsData = response.data.jobs;
+      const formattedJobs = jobsData.map((job) => ({
+        title: job["Job Title"],
+        company: job["Company"],
+        location: job["Location"],
+        link: job["Link_To_Apply"],
+        summary: job["Summary"],
+      }));
+
+      setJobs(formattedJobs);
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+      setJobs([]);
+    } finally {
       setLoading(false);
       setView("results");
-    }, 1000);
+    }
+  };
+
+  const fetchInternships = async (type) => {
+    setLoading(true);
+    setView("loading");
+
+    try {
+      const encodedType = encodeURIComponent(type);
+      const apiUrl = `http://127.0.0.1:5000/internships?search=${encodedType}`;
+      const token = "da_anandz"; // Replace with your actual token if needed
+
+      const response = await axios.get(apiUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(response)
+      const jobsData = response.data.jobs;
+      console.log(jobsData)
+      const formattedJobs = jobsData.map((job) => ({
+        title: job["Job Title"] || job["role"],
+        company: job["Company"] || job["company"],
+        location: job["Location"],
+        link: job["Link_To_Apply"] || job["link_to_apply"],
+        summary: job["Summary"],
+      }));
+
+      setJobs(formattedJobs);
+    } catch (error) {
+      console.error("Error fetching internships:", error);
+      setJobs([]);
+    } finally {
+      setLoading(false);
+      setView("results");
+    }
   };
 
   // Filter jobs based on search query
+
+  // const filteredJobs = jobs.filter((job) =>
+  //   job.title.toLowerCase().includes(searchQuery.toLowerCase())
+  // );
+
   const filteredJobs = jobs.filter((job) =>
     job.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -47,10 +168,13 @@ const LandingPage = ({ setView }) => {
             onChange={(e) => setSearchQuery(e.target.value)} // Update search query
           />
           <div className="button-group">
-            <button onClick={() => fetchJobs("jobs")} className="scrape-btn">
+            <button onClick={() => fetchJobs(searchQuery)} className="scrape-btn">
               Scrape Jobs Only
             </button>
-            <button onClick={() => fetchJobs("internships")} className="scrape-btn">
+            <button
+              onClick={() => fetchInternships(searchQuery)}
+              className="scrape-btn"
+            >
               Scrape Internships Only
             </button>
           </div>
@@ -60,7 +184,11 @@ const LandingPage = ({ setView }) => {
       {jobs.length > 0 && (
         <div className="job-cards-container">
           {filteredJobs.length > 0 ? (
-            <JobCards jobs={filteredJobs} />
+            <JobCards
+              jobs={filteredJobs}
+              handleGenerateCoverLetter={handleGenerateCoverLetter}
+              handleGenerateResume={handleGenerateResume}
+            />
           ) : (
             <p>No jobs found matching your search.</p>
           )}

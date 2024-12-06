@@ -42,6 +42,23 @@
   text-transform: capitalize; 
 }
 
+.link {
+  color: rgb(9, 199, 247);
+  
+  /* *text-decoration: underline; */
+  cursor: pointer;
+}
+
+.icon-container {
+  position: absolute;
+  top: 20px;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
 /* Job Details */
 .job-card p {
   font-size: 1rem;
