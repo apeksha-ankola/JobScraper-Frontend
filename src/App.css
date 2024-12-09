@@ -2,7 +2,6 @@
 @import "~slick-carousel/slick/slick-theme.css";
 
 body {
-  margin: 0;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(120deg, #ffffff, #D4EBF8); /* Soft gradient */
   color: #0A3981; /* Dark blue for text */

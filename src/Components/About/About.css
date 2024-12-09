@@ -1,132 +1,131 @@
-/* Reset and ensure full height of the page */
-body, html {
-    margin: auto;
-    padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
+.about-intro h1 {
+  font-size: 2.5rem;
+  color: #1f509a;
+  margin-bottom: 1rem;
 }
 
-/* About Page Container */
-.about-page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensures the page takes up the full viewport height */
+.about-intro p {
+  font-size: 1.2rem;
+  color: #0a3981;
+  margin-bottom: 1rem;
 }
 
-/* About Section */
-.about-container {
-    flex: 1; /* This ensures the footer is pushed to the bottom if content is insufficient */
-    width: 100%;
-    padding: 4rem 2rem;
-    background-color: #D4EBF8; /* Light Blue Background */
-    text-align: center;
-    font-family: "Arial", sans-serif;
+/* Team Section */
+.team-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
 }
 
-.about-container h1 {
-    font-size: 2.5rem;
-    color: #1F509A; /* Darker Blue */
-    
+.team-column {
+  width: 300px;
+  position: relative;
 }
 
-.about-container p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #0A3981; /* Deep Blue */
-    margin-bottom: 1rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+.team-photo-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
 }
 
-.about-container strong {
-    color: #E38E49; /* Accent Orange */
+.team-photo-wrapper:hover {
+  transform: scale(1.05);
 }
 
-/* Footer Section */
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    margin: 0; /* Remove gaps on the sides */
-    padding: 14rem 0 9rem 0;
-    background-color: #1F509A; /* Darker Blue */
-    color: #ffffff;
-    text-align: center;
-    padding-top: 9rem;
+.team-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
 }
 
-.footer-about {
-    margin: auto;
-    padding-bottom: 2rem;
+.team-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
-footer h3 {
-    color: #E38E49; /* Accent Orange */
-    margin-bottom: 2rem;
-    font-size: 2rem;
+.team-photo-wrapper:hover .team-hover {
+  opacity: 1;
 }
 
-footer p {
-    color: #ffffff;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
+.team-hover h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.footer-bottom--section {
-    padding-top: 2rem;
+.team-hover p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
 }
 
-.footer-bottom--section hr {
-    border: none;
-    border-top: 1px solid #ffffff;
-    margin: 1.5rem auto;
-    max-width: 800px;
+.hover-button {
+  background-color: #e38e49;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.privacy-terms {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1rem;
+.hover-button:hover {
+  background-color: #d4ebf8;
+  color: #0a3981;
 }
 
-.privacy-terms p {
-    margin: 0;
-    cursor: pointer;
-    text-decoration: underline;
-    color: #E38E49; /* Accent Orange */
+/* Divider Line */
+.divider-line1 {
+  margin: 0;
+  height: 5px;
+  background-color: #e38e49;
+  width: 100%;
 }
 
-/* Footer should stick to the bottom, even if the content is short */
-footer {
-    position: relative; /* Keep it in normal flow */
-    bottom: 0;  /* Ensures it sticks to the bottom when necessary */
+.divider-line {
+  margin: 2rem 0;
+  height: 5px;
+  background-color: #1f509a;
+  width: 100%;
+}
+
+/* Footer */
+.about-footer {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #0a3981;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.about-footer p {
+  margin: 0.5rem 0;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .about-container {
-        padding: 2rem 1rem;
-    }
+  .team-section {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .about-container h1 {
-        font-size: 2rem;
-    }
-
-    .about-container p {
-        font-size: 1rem;
-    }
-
-    footer {
-        padding: 2rem 1rem;
-    }
-
-    footer h3 {
-        font-size: 1.75rem;
-    }
-
-    .footer-about {
-        padding-bottom: 1.5rem;
-    }
+  .team-column {
+    width: 50%;
+  }
 }

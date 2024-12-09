@@ -1,51 +1,87 @@
 import React from "react";
 import "./About.css";
 
+import Apeksha from "../Images/Apeksha.jpg";
+import Fatima from "../Images/Fatimaa.jpg";
+import Ayaj from "../Images/Ayaj.jpg";
+
+const teamMembers = [
+  {
+    name: "Apeksha D Ankola",
+    photo: Apeksha,
+    description: "Frontend Developer",
+    link: "https://www.linkedin.com/in/apeksha-d-ankola/",
+  },
+  {
+    name: "Fatima Amani",
+    photo: Fatima,
+    description: "Backend Engineer and Web Scraper",
+    link: "https://www.linkedin.com/in/fatimaamani/",
+  },
+  {
+    name: "Ayaj Anand",
+    photo: Ayaj,
+    description: "Full Stack Developer",
+    link: "https://www.linkedin.com/in/ayaj-anand-492986127/",
+  },
+];
+
 const About = () => {
   return (
-    <div className="about-page">
-      {/* About Section */}
-      <section className="about-container">
+    <div className="about-container">
+      {/* Intro Section */}
+      <div className="about-intro">
         <h1>About JobScraper</h1>
         <p>
-          <strong>JobScraper</strong> is your one-stop platform for finding tailored job
-          opportunities effortlessly. By leveraging advanced web scraping
-          techniques, JobScraper aggregates job listings from top portals,
-          saving you hours of manual searches.
+          JobScraper is a platform tailored to streamline your job search
+          journey by offering customized opportunities and assistance in creating
+          exceptional resumes and cover letters.
         </p>
         <p>
-          Our platform enables you to filter jobs based on your preferences and
-          provides tools to customize your resumes and cover letters, ensuring
-          you stand out in your applications.
+          We aim to bridge the gap between talent and opportunity, empowering job
+          seekers globally.
         </p>
-        <p>
-          With periodic updates and a seamless user interface, JobScraper is
-          designed to make job hunting efficient and personalized.
-        </p>
-      </section>
+      </div>
 
-      {/* Footer Section */}
-      <footer>
-        <div className="footer-about">
-          <h3>JobScraper</h3>
-          <p>
-            JobScraper simplifies your job search by bringing tailored job
-            opportunities from top websites into one place.
-          </p>
-          <p>
-            Explore, customize, and apply with ease—your career aspirations
-            are just a few clicks away!
-          </p>
-        </div>
+      {/* Divider Line */}
+      <div className="divider-line1"></div>
 
-        <div className="footer-bottom--section">
-          <hr />
-          <p>&copy; {new Date().getFullYear()} JobScraper. All Rights Reserved.</p>
-          <div className="privacy-terms">
-            <p>Privacy Policy</p>
-            <p>Terms & Conditions</p>
+      {/* Team Section */}
+      <h1>Meet the Team</h1>
+      <div className="team-section">
+        {teamMembers.map((member, index) => (
+          <div className="team-column" key={index}>
+            <div className="team-photo-wrapper">
+              <img
+                src={member.photo}
+                alt={member.name}
+                className="team-photo"
+              />
+              <div className="team-hover">
+                <h3>{member.name}</h3>
+                <p>{member.description}</p>
+                <a
+                  href={member.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <button className="hover-button">LinkedIn Profile</button>
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
+      </div>
+
+      {/* Divider Line */}
+      <div className="divider-line"></div>
+
+      {/* Footer */}
+      <footer className="about-footer">
+        <p>
+          Best viewed on the latest versions of Edge, Mozilla, Chrome, Opera, & Safari.
+        </p>
+        <p>Copyright © 2024 JobScraper Pvt Ltd - All rights reserved.</p>
       </footer>
     </div>
   );
