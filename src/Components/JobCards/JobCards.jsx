@@ -19,23 +19,20 @@ const JobCards = ({ jobs, handleGenerateCoverLetter, handleGenerateResume }) => 
             href={job.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="link"
+            className="apply-link"
           >
             Link to Apply
           </a>
-          <div className="icon-cover-letter-container">
+          <div className="icon-container">
             <SlEnvolopeLetter
-              size={24}
-              className="icon-cover-letter-btn"
+              size={32}
+              className="icon-btn"
               onClick={() => handleGenerateCoverLetter(job)}
               title="Generate Cover Letter"
             />
-          </div>
-
-          <div className="icon-cover-letter-container">
             <FcDocument
-              size={24}
-              className="icon-cover-letter-btn"
+              size={32}
+              className="icon-btn"
               onClick={() => handleGenerateResume(job)}
               title="Generate Resume"
             />
