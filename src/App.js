@@ -53,6 +53,12 @@ const App = () => {
     setIsAuthenticated(loggedIn);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    setIsAuthenticated(false);
+     // Update state to trigger UI change
+  };
+
   return (
     <Router>
       <Routes>
@@ -70,7 +76,7 @@ const App = () => {
             path="/"
             element={
               <div className="app">
-                <Navbar />
+                <Navbar handleLogout={handleLogout}/>
                 {/* Home Section */}
                 <div id="home" className="section home-section">
                   {view === "home" && (

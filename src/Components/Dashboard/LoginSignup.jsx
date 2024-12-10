@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginSignup.css";
-// import axios from 'axios';
+import axios from 'axios';
 import logo from "../Images/no-bg.png";
 
 const LoginSignup = ({ setIsAuthenticated }) => {
+  
   const [isLoginActive, setIsLoginActive] = useState(true);
   const [formData, setFormData] = useState({
     email: "",
@@ -15,14 +16,14 @@ const LoginSignup = ({ setIsAuthenticated }) => {
     phone: "",
   });
 
-  // const [error, setError] = useState('');
+  const [error, setError] = useState('');
 
   const navigate = useNavigate();
-  // const BASE_URL = 'http://127.0.0.1:5000';
+  const BASE_URL = 'http://127.0.0.1:5000';
 
   const handleSwitcher = (isLogin) => {
     setIsLoginActive(isLogin);
-    // setError('');
+    setError('');
   };
 
   const handleChange = (e) => {
@@ -33,61 +34,64 @@ const LoginSignup = ({ setIsAuthenticated }) => {
     }));
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setError('');
-
-  //   const endpoint = isLoginActive
-  //     ? `${BASE_URL}/login`
-  //     : `${BASE_URL}/signup`;
-
-  //   const payload = {
-  //     username: formData.userName,
-  //     password: formData.password,
-  //   };
-
-  //   if (!isLoginActive) {
-  //     payload.name = formData.name;
-  //     payload.location = formData.location;
-  //     payload.phone = formData.phone;
-  //     payload.email = formData.email;
-  //   }
-
-  //   try {
-  //     const response = await axios.post(endpoint, payload, { 
-  //       withCredentials: true 
-  //     });
-
-  //     if (response.status === 200 || response.status === 201) {
-  //       const data = response.data;
-        
-  //       // Update session storage and state
-  //       sessionStorage.setItem('username', data.username);
-  //       sessionStorage.setItem('isLoggedIn', 'true');
-        
-  //       // Update parent component's state
-  //       setIsAuthenticated(true);
-  //       setUsername(data.username);
-
-  //       // Redirect to home page
-  //       navigate('/');
-  //     }
-  //   } catch (error) {
-  //     // Handle specific error responses
-  //     if (error.response) {
-  //       setError(error.response.data.message || 'An error occurred');
-  //     } else {
-  //       setError('Network error. Please try again.');
-  //     }
-  //     console.error('Error during request:', error);
-  //   }
-  // };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsAuthenticated(true);
-    navigate("/home");
+    setError('');
+
+    const endpoint = isLoginActive
+      ? `${BASE_URL}/login`
+      : `${BASE_URL}/signup`;
+
+    const payload = {
+      username: formData.userName,
+      password: formData.password,
+    };
+
+    if (!isLoginActive) {
+      payload.name = formData.name;
+      payload.location = formData.location;
+      payload.phone = formData.phone;
+      payload.email = formData.email;
+    }
+
+    try {
+      const response = await axios.post(endpoint, payload, { 
+        withCredentials: true 
+      });
+      console.log(response);
+    
+      if (response.status === 200 || response.status === 201) {
+        const data = response.data;
+        
+        // Update session storage and state
+        sessionStorage.setItem('username', data.username);
+        sessionStorage.setItem('isLoggedIn', 'true');
+        setIsAuthenticated(true);
+    
+        // Redirect to home page
+        navigate('/');
+      }
+    } catch (error) {
+      if (error.response) {
+        // Check if the response contains a 401 status and display the message
+        if (error.response.status === 401) {
+          alert(error.response.data.message); // Show the backend message for 401 error
+        } else {
+          setError(error.response.data.message || 'An error occurred');
+        }
+      } else {
+        setError('Network error. Please try again.');
+      }
+      console.error('Error during request:', error);
+    }
+    
   };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   setIsAuthenticated(true);
+  //   navigate("/home");
+  // };
 
   return (
     <div className="login-signup-container">
