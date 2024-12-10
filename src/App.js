@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import LandingPage from "./Components/Landingpage/LandingPage";
 import About from "./Components/About/About";
-import JobCards from "./Components/JobCards/JobCards"; // Import JobCards component
+// import JobCards from "./Components/JobCards/JobCards";
+import DummyCards from "./Components/DummyCards/DummyCards";
 import CompanyCarousel from "./Components/Carousel/CompanyCarousel";
 import "./App.css";
 import logo from "./Components/Images/no-bg.png";
-import { BrowserRouter as Router } from "react-router-dom";
+
 
 const App = () => {
   const [view, setView] = useState("home");
@@ -14,24 +16,28 @@ const App = () => {
   // Dummy jobs data
   const jobsData = [
     {
-      title: "Software Engineer",
-      company: "Tech Corp",
-      location: "San Francisco, CA",
+      title: "Specialist Programmer",
+      company: "Infosys",
+      EmploymentType: "Full Time",
+      location: "Mysuru, Karnataka",
     },
     {
-      title: "Data Scientist",
-      company: "Data Inc.",
-      location: "New York, NY",
+      title: "Associate TS Engineer",
+      company: "Synamedia",
+      EmploymentType: "Internship + Full Time",
+      location: "Bengaluru, Karnataka",
     },
     {
-      title: "Web Developer",
-      company: "Web Solutions",
-      location: "Los Angeles, CA",
+      title: "Graduate Engineer Trainee",
+      company: "LTI-Mindtree",
+      EmploymentType: "Internship + Full Time",
+      location: "Bengaluru, Karnataka",
     },
     {
-      title: "Backend Developer",
-      company: "Amy Solutions",
-      location: "Los Angeles, CA",
+      title: "GenC Next | Pro | Genc ",
+      company: "Cognizant",
+      EmploymentType: "Full Time",
+      location: "Remote Working",
     },
   ];
 
@@ -62,7 +68,7 @@ const App = () => {
           <h1>Jobs</h1>
           <p>Explore the latest job opportunities!</p>
           <div className="job-cards-container">
-            <JobCards jobs={jobsData} /> {/* Pass jobsData to JobCards */}
+            <DummyCards jobs={jobsData} /> {/* Pass jobsData to JobCards */}
           </div>
         </div>
         {/* Company Logos Carousel */}
@@ -72,7 +78,7 @@ const App = () => {
           <h1>Internships</h1>
           <p>Discover exciting internships to kickstart your career.</p>
           <div className="job-cards-container">
-            <JobCards jobs={jobsData} />{" "}
+            <DummyCards jobs={jobsData} />{" "}
             {/* You can replace jobsData with internship data */}
           </div>
         </div>
