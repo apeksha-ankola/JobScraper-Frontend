@@ -3,12 +3,55 @@
 *::after {
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
   font-family: Roboto, -apple-system, "Helvetica Neue", "Segoe UI", Arial,
     sans-serif;
-  background: #2c344e; /* Darker background */
+  background: #0a3981; /* Darker background */
+}
+/* Left side welcome note */
+.login-signup-container {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(to right, #e38e49, #1f509a);
+}
+
+.info-section {
+  flex: 1;
+  padding: 40px;
+  color: #0a3981;
+  text-align: center;
+  background: #e38e49;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-section h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.info-section p {
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.animated-logo {
+  width: 300px;
+  height: auto;
+  animation: bounceLogo 3s infinite ease-in-out;
+}
+
+/* Right side, forms section */
+.form-section {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d4ebf8;
 }
 
 .forms-section {
@@ -17,13 +60,12 @@ body {
   justify-content: center;
   align-items: center;
 }
-
 .section-title {
-  font-size: 32px;
-  letter-spacing: 1px;
-  color: #720472; /* Lighter text for contrast */
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
+/* Login/signup form */
 .forms {
   display: flex;
   align-items: flex-start;
@@ -67,7 +109,7 @@ body {
   font-family: inherit;
   font-size: 16px;
   letter-spacing: 0.5px;
-  color: #0e0d0d; /* Bright white text */
+  color: #0a3981;
   background-color: transparent;
   border: none;
   outline: none;
@@ -77,24 +119,14 @@ body {
 
 .form-wrapper.is-active .switcher-login {
   color: #000; /* Black color when login is active */
-  /*background-color: #ffffff; /* White background when login is active */
+  background-color: #e38e49;
   transform: translateX(90px);
 }
 
 .form-wrapper.is-active .switcher-signup {
   color: #0e0d0d;
-  /*background-color: #e74c3c; /* Red background when signup is active */
+  background-color: #e38e49;
   transform: translateX(-90px);
-}
-
-.underline {
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  overflow: hidden;
-  pointer-events: none;
-  width: 100%;
-  height: 2px;
 }
 
 .underline::before {
@@ -140,7 +172,7 @@ body {
 
 @keyframes showLogin {
   0% {
-    background: #b5c8d7; /* Darker light blue */
+    background: #b5c8d7;
     transform: translate(40%, 10px);
   }
   50% {
@@ -274,57 +306,60 @@ body {
   transition: all 0.4s ease-in;
 }
 
-.btn-login {
-  color: #fbfdff;
-  background: #6e9f2f; /* Darker green */
-  transform: translateX(-30%);
-}
-
+.btn-login,
 .btn-signup {
-  color: #6e9f2f;
-  background: #fbfdff;
-  box-shadow: inset 0 0 0 2px #6e9f2f; /* Darker green border */
-  transform: translateX(30%);
+  cursor: pointer;
+  font-size: 24px;
+  color: #0a3981; /* Consistent blue for icons */
+  transition: color 0.3s ease;
 }
 
-.login-signup-container {
-  display: flex;
-  height: 100vh;
-  background: linear-gradient(to right, #e38e49, #1f509a);
+.btn-signup,
+.btn-login :hover {
+  color: #0f499f; /* Matches the link color on hover */
 }
 
-.info-section {
-  flex: 1;
-  padding: 40px;
-  color: #0a3981;
-  text-align: center;
-  background: #e38e49;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .login-signup-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .info-section,
+  .form-section {
+    flex: none;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .info-section h1 {
+    font-size: 32px;
+  }
+
+  .info-section p {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
 }
 
-.info-section h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
+@media (max-width: 480px) {
+  .info-section h1 {
+    font-size: 28px;
+  }
 
-.info-section p {
-  font-size: 18px;
-  margin-bottom: 40px;
-}
+  .info-section p {
+    font-size: 14px;
+  }
 
-.animated-logo img {
-  width: 150px;
-  height: 150px;
-}
+  .animated-logo {
+    width: 200px;
+  }
 
-.form-section {
-  flex: 1;
-  padding: 40px;
-  background: #d4ebf8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .section-title {
+    font-size: 24px;
+  }
 }
