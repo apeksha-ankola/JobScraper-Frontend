@@ -15,7 +15,7 @@ const teamMembers = [
   {
     name: "Fatima Amani",
     photo: Fatima,
-    description: "Backend Engineer and Web Scraper",
+    description: "Backend Developer",
     link: "https://www.linkedin.com/in/fatimaamani/",
   },
   {
