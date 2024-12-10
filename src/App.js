@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import LandingPage from "./Components/Landingpage/LandingPage";
 import About from "./Components/About/About";
@@ -12,7 +17,7 @@ import logo from "./Components/Images/no-bg.png";
 import LoginSignup from "./Components/Dashboard/LoginSignup";
 
 const App = () => {
-  // const [view, setView] = useState("home");
+  const [view, setView] = useState("home");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const jobsData = [
@@ -55,11 +60,7 @@ const App = () => {
         {!isAuthenticated && (
           <Route
             path="/login"
-            element={
-              <LoginSignup
-                setIsAuthenticated={setIsAuthenticated}
-              />
-            }
+            element={<LoginSignup setIsAuthenticated={setIsAuthenticated} />}
           />
         )}
 
@@ -70,15 +71,23 @@ const App = () => {
             element={
               <div className="app">
                 <Navbar />
+                {/* Home Section */}
                 <div id="home" className="section home-section">
-                  <div className="home-content">
-                    <h1>Welcome to Job-Scraper</h1>
-                    <p>Find your dream job or internship here.</p>
-                  </div>
-                  <div className="home-logo">
-                    <img src={logo} alt="Logo" className="animated-logo" />
-                  </div>
-                  <LandingPage />
+                  {view === "home" && (
+                    <div className="home-content">
+                      <h1>Welcome to Job-Scraper</h1>
+                      <p>Find your dream job or internship here.</p>
+                    </div>
+                  )}
+
+                  {view === "home" && (
+                    <div className="home-logo">
+                      <img src={logo} alt="Logo" className="animated-logo" />
+                    </div>
+                  )}
+
+                  {/* LandingPage handles dynamic view changes */}
+                  <LandingPage setView={setView} />
                 </div>
                 <div id="jobs" className="cardsection">
                   <h1>Jobs</h1>
