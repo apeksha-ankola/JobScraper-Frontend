@@ -65,8 +65,15 @@
 /* Add hover effect */
 .hamburger:hover .menu-icon {
   transform: scale(1.1); 
-  color: #0056b3; /* Darker shade on hover */
+  color: #002194; /* Darker shade on hover */
 }
+
+.user-name {
+  font-size: 0.7em; /* Adjust this value to change the font size */
+   /* Optional: Reduce the weight if needed */
+  color: #002194 /* Optional: Adjust the color for better readability */
+}
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {

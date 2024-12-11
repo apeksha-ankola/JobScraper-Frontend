@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RiMenuSearchFill } from "react-icons/ri"; // Import the icon
+import { RiMenuSearchFill } from "react-icons/ri";
 import "./Navbar.css";
 import logo from "../Images/no-bg111.png";
 
 const Navbar = ({ handleLogout }) => {
-  const [isOpen, setIsOpen] = useState(false); // State to toggle the hamburger menu
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const name = sessionStorage.getItem("username"); // Retrieve the name from sessionStorage
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -15,12 +16,12 @@ const Navbar = ({ handleLogout }) => {
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     section.scrollIntoView({ behavior: "smooth" });
-    setIsOpen(false); // Close menu after clicking a link
+    setIsOpen(false);
   };
 
   const logout = () => {
-    handleLogout(); // Call the handleLogout function passed as a prop
-    navigate("/login"); // Redirect to the login page
+    handleLogout();
+    navigate("/login");
   };
 
   return (
@@ -29,7 +30,9 @@ const Navbar = ({ handleLogout }) => {
         {/* Logo */}
         <div className="navbar-logo">
           <img src={logo} alt="Logo" />
-          <h1>JobScraper</h1>
+          <h2>
+            JobScraper <span className="user-name">{name}</span>
+          </h2>
         </div>
 
         {/* Hamburger Icon */}

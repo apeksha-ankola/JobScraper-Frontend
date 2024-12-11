@@ -120,7 +120,7 @@ const LandingPage = ({ setView }) => {
     try {
       const encodedType = encodeURIComponent(type);
       const apiUrl = `http://127.0.0.1:5000/internships?search=${encodedType}`;
-      const token = "da_anandz"; // Replace with your actual token if needed
+      // const token = "da_anandz"; // Replace with your actual token if needed
 
       const response = await axios.get(apiUrl, {
         withCredentials: true, // Include cookies with the request
@@ -158,7 +158,7 @@ const LandingPage = ({ setView }) => {
   const filteredJobs = jobs.filter((job) =>
     job.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  const name = sessionStorage.getItem("username")
+  // const name = sessionStorage.getItem("username")
 
   return (
     <div className="landing-page">
@@ -168,7 +168,7 @@ const LandingPage = ({ setView }) => {
       {!loading && (
         
         <div className="search-container">
-        <h2>Welcome {name}</h2>
+        {/* <h2>Welcome {name}</h2> */}
           <h2>Search for Jobs and Internships</h2>
           <input
             type="text"
