@@ -168,7 +168,7 @@ const LandingPage = ({ setView }) => {
       {!loading && (
         
         <div className="search-container">
-        <p>Welcome {name}</p>
+        <h2>Welcome {name}</h2>
           <h2>Search for Jobs and Internships</h2>
           <input
             type="text"

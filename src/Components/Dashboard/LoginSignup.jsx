@@ -79,6 +79,11 @@ const LoginSignup = ({ setIsAuthenticated }) => {
         } else {
           setError(error.response.data.message || 'An error occurred');
         }
+        if (error.response.status === 409) {
+          alert(error.response.data.message); // Show the backend message for 401 error
+        } else {
+          setError(error.response.data.message || 'An error occurred');
+        }
       } else {
         setError('Network error. Please try again.');
       }
