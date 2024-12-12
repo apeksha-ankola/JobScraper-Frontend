@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const storedUsername = sessionStorage.getItem("username");
-  const storedName = sessionStorage.getItem("Name")
-  const storedPhone = sessionStorage.getItem("Phone")
-  const storedGithub = sessionStorage.getItem("Github")
-  const storedLinkedin = sessionStorage.getItem("LinkedIn")
-  const storedLocation = sessionStorage.getItem("Location")
+  const storedName = sessionStorage.getItem("Name");
+  const storedPhone = sessionStorage.getItem("Phone");
+  const storedGithub = sessionStorage.getItem("Github");
+  const storedLinkedin = sessionStorage.getItem("LinkedIn");
+  const storedLocation = sessionStorage.getItem("Location");
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
     fullName: storedName || "Name",
@@ -19,10 +20,9 @@ const Profile = () => {
   });
 
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Set username from localStorage if it exists
-    // const storedUsername = sessionStorage.getItem("username");
     if (!storedUsername) {
       setMessage("Username not found in local storage. Please log in.");
     }
@@ -51,29 +51,26 @@ const Profile = () => {
 
   const handleSaveClick = async () => {
     setIsEditing(false);
-  
+
     if (!storedUsername) {
       setMessage("Username not found in local storage. Cannot update profile.");
       return;
     }
-  
+
     try {
       const formData = {
         username: storedUsername,
         ...profileData,
       };
-  
-      // Correct axios POST request
+
       const response = await axios.post("http://127.0.0.1:5000/profile", formData, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-  
-      // Handle success or error
+
       if (response.data.success) {
         setMessage(response.data.message);
-        // console.log(response.data.user)
       } else {
         setMessage(response.data.message || "Failed to update profile.");
       }
@@ -82,76 +79,66 @@ const Profile = () => {
       setMessage("An error occurred. Please try again later.");
     }
   };
-  
+
+  const handleBackClick = () => {
+    navigate("/");
+  };
 
   return (
     <div className="profile-container">
-      {/* Header Section */}
       <header className="profile-header">
         <h1>Welcome, {profileData.fullName}</h1>
         <p>Your personalized job-matching assistant</p>
       </header>
 
-      {/* Profile Details Section */}
       <section className="profile-details">
         <div className="profile-card">
-          {/* <img
-            src="https://via.placeholder.com/150"
-            alt="Profile"
-            className="profile-image"
-          /> */}
-          {/* <h2>{profileData.fullName}</h2> */}
           {!isEditing && (
-            <button className="edit-profile-btn" onClick={handleEditClick}>
-              Edit Profile
-            </button>
+            <div className="button-group">
+              <button className="edit-profile-btn" onClick={handleEditClick}>
+                Edit Profile
+              </button>
+              <button className="edit-profile-btn" onClick={handleBackClick}>
+                Back
+              </button>
+            </div>
           )}
         </div>
       </section>
 
-      {/* Personal Information Section */}
       <section className="personal-info">
         <h2>Personal Information</h2>
         <div className="info-list">
-          {["fullName", "phone", "location", "github", "linkedin"].map(
-            (field) => (
-              <div className="info-item" key={field}>
-                <span>{field.replace(/^\w/, (c) => c.toUpperCase())}:</span>
-                {isEditing ? (
-                  <input
-                    type="text"
-                    name={field}
-                    value={profileData[field]}
-                    onChange={handleInputChange}
-                  />
-                ) : (
-                  <p>{profileData[field]}</p>
-                )}
-              </div>
-            )
-          )}
+          {["fullName", "phone", "location", "github", "linkedin"].map((field) => (
+            <div className="info-item" key={field}>
+              <span>{field.replace(/^\w/, (c) => c.toUpperCase())}:</span>
+              {isEditing ? (
+                <input
+                  type="text"
+                  name={field}
+                  value={profileData[field]}
+                  onChange={handleInputChange}
+                />
+              ) : (
+                <p>{profileData[field]}</p>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Save Button */}
       {isEditing && (
-        <button className="update-info-btn" onClick={handleSaveClick}>
-          Save Changes
-        </button>
+        <div className="button-group">
+          <button className="update-info-btn" onClick={handleSaveClick}>
+            Save Changes
+          </button>
+          <button className="update-info-btn" onClick={handleBackClick}>
+            Back
+          </button>
+        </div>
       )}
 
-      {/* Message Section */}
       {message && <p className="update-message">{message}</p>}
-
-      {/* Resume Upload Section */}
-      {/* <section className="profile-resume">
-        <h2>Resume</h2>
-        <div className="resume-upload">
-          <p>Upload your latest resume to improve job matching.</p>
-          <input type="file" className="resume-input" />
-          <button className="upload-resume-btn">Upload</button>
-        </div>
-      </section> */}
     </div>
   );
 };
