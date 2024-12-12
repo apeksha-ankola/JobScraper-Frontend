@@ -65,13 +65,14 @@ const LoginSignup = ({ setIsAuthenticated }) => {
         // Update session storage and state
         sessionStorage.setItem('username', data.username);
         sessionStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem("Email", formData.email);
         if (data.userData && data.userData.profile) {
           sessionStorage.setItem("Name", data.userData.profile.name);
           sessionStorage.setItem("Phone", data.userData.profile.phone);
           sessionStorage.setItem("Location", data.userData.profile.location);
           sessionStorage.setItem("Github", data.userData.profile.github);
           sessionStorage.setItem("LinkedIn", data.userData.profile.linkedin);
-          sessionStorage.setItem("Email",data.userData.email);
+          
         }
         
         setIsAuthenticated(true);
