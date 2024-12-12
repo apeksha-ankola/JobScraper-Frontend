@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { RiMenuSearchFill } from "react-icons/ri";
 import "./Navbar.css";
 import logo from "../Images/no-bg111.png";
@@ -46,6 +46,9 @@ const Navbar = ({ handleLogout }) => {
           <li onClick={() => scrollToSection("jobs")}>Jobs</li>
           <li onClick={() => scrollToSection("internships")}>Internships</li>
           <li onClick={() => scrollToSection("about")}>About Us</li>
+          <li>
+            <Link to="/profile">Profile</Link> {/* Add Link to profile */}
+          </li>
           <li onClick={logout}>Logout</li>
         </ul>
       </div>

@@ -1,0 +1,272 @@
+/* General Styles */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #d4ebf8;
+}
+
+.profile-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Header Section */
+.profile-header {
+  text-align: center;
+  background: linear-gradient(90deg, #e38e49, #1f509a);
+  color: white;
+  padding: 1.5rem 1rem;
+  border-radius: 8px 8px 0 0;
+}
+
+.profile-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.profile-header p {
+  margin: 0.5rem 0 0;
+  font-size: 1.1rem;
+}
+
+/* Profile Card */
+.profile-card {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #1f509a;
+}
+
+.profile-card h2 {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+  color: #0a3981;
+}
+
+.profile-card p {
+  color: #555;
+}
+
+.edit-profile-btn {
+  background-color: #e38e49;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-profile-btn:hover {
+  background-color: #d87a3c;
+}
+
+/* Personal Information Section */
+.personal-info {
+  margin: 2rem 0;
+}
+
+.personal-info h2 {
+  color: #0a3981;
+  margin-bottom: 1rem;
+}
+
+.info-list {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.update-info-btn {
+  background-color: #1f509a;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.update-info-btn:hover {
+  background-color: #174076;
+}
+
+/* Job Preferences Section */
+.profile-preferences {
+  margin: 2rem 0;
+}
+
+.profile-preferences h2 {
+  color: #0a3981;
+  margin-bottom: 1rem;
+}
+
+.preferences-list {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.preference-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.preference-item:last-child {
+  border-bottom: none;
+}
+
+.update-preferences-btn {
+  background-color: #1f509a;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.update-preferences-btn:hover {
+  background-color: #174076;
+}
+
+/* Resume Upload Section */
+.resume-upload {
+  text-align: center;
+}
+
+.resume-input {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.upload-resume-btn {
+  background-color: #0a3981;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upload-resume-btn:hover {
+  background-color: #06305b;
+}
+
+input {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  border-color: #1f509a;
+  box-shadow: 0 0 5px rgba(31, 80, 154, 0.5);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .profile-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .profile-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .profile-header p {
+    font-size: 1rem;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .edit-profile-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info-item span {
+    font-weight: bold;
+  }
+
+  .update-info-btn {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .profile-header p {
+    font-size: 0.9rem;
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .edit-profile-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .info-item {
+    margin-bottom: 0.4rem;
+  }
+
+  .update-info-btn {
+    padding: 0.4rem 0.8rem;
+  }
+
+  .resume-input {
+    width: 100%;
+  }
+}

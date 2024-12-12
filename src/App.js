@@ -15,6 +15,7 @@ import "./App.css";
 import logo from "./Components/Images/no-bg.png";
 
 import LoginSignup from "./Components/Dashboard/LoginSignup";
+import Profile from "./Components/Profile/Profile";
 
 const App = () => {
   const [view, setView] = useState("home");
@@ -118,6 +119,8 @@ const App = () => {
             }
           />
         )}
+        {/* Profile Section */}
+        <Route path="/profile" element={<Profile />} />
 
         {/* Redirects */}
         <Route
