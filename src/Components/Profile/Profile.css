@@ -40,12 +40,12 @@ body {
   margin: 2rem 0;
 }
 
-.profile-image {
+/* .profile-image {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   border: 3px solid #1f509a;
-}
+} */
 
 .profile-card h2 {
   margin: 0.5rem 0;
@@ -112,50 +112,9 @@ body {
   background-color: #174076;
 }
 
-/* Job Preferences Section */
-.profile-preferences {
-  margin: 2rem 0;
-}
-
-.profile-preferences h2 {
-  color: #0a3981;
-  margin-bottom: 1rem;
-}
-
-.preferences-list {
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border-radius: 5px;
-}
-
-.preference-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border-bottom: 1px solid #ddd;
-}
-
-.preference-item:last-child {
-  border-bottom: none;
-}
-
-.update-preferences-btn {
-  background-color: #1f509a;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  margin-top: 1rem;
-  cursor: pointer;
-}
-
-.update-preferences-btn:hover {
-  background-color: #174076;
-}
 
 /* Resume Upload Section */
-.resume-upload {
+/* .resume-upload {
   text-align: center;
 }
 
@@ -177,7 +136,7 @@ body {
 
 .upload-resume-btn:hover {
   background-color: #06305b;
-}
+} */
 
 input {
   border: 1px solid #ddd;
