@@ -1,11 +1,11 @@
-/* Navbar Styles */
+/* Navbar Styles */ 
 .navbar {
   background: #aee9ff;
   color: #002194;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0.5, 0.5, 0.5);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .navbar-container {
@@ -41,10 +41,19 @@
 
 .navbar-links li {
   cursor: pointer;
+  color: #002194; /* Uniform link color */
+  font-size: 1rem; /* Same size for all links */
 }
 
-.navbar-links li:hover {
-  text-decoration: underline;
+.navbar-links li a {
+  text-decoration: none;
+  color: inherit; /* Inherit color from parent */
+  transition: color 0.3s;
+}
+
+.navbar-links li:hover,
+.navbar-links li a:hover {
+  text-decoration: underline; /* Uniform hover effect */
 }
 
 .hamburger {
@@ -56,6 +65,7 @@
   cursor: pointer;
   z-index: 1100; /* Ensure it's above other elements */
 }
+
 .menu-icon {
   font-size: 1.5rem; /* Adjust the size of the icon */
   color: #002194; /* Match the color scheme */
@@ -69,11 +79,9 @@
 }
 
 .user-name {
-  font-size: 0.7em; /* Adjust this value to change the font size */
-   /* Optional: Reduce the weight if needed */
-  color: #002194 /* Optional: Adjust the color for better readability */
+  font-size: 0.7em;
+  color: #002194;
 }
-
 
 /* Responsive Styles */
 @media (max-width: 768px) {
