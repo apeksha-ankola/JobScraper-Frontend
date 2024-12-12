@@ -1,35 +1,94 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Profile.css";
+import axios from 'axios';
 
 const Profile = () => {
+  const storedUsername = sessionStorage.getItem("username");
+  const storedName = sessionStorage.getItem("Name")
+  const storedPhone = sessionStorage.getItem("Phone")
+  const storedGithub = sessionStorage.getItem("Github")
+  const storedLinkedin = sessionStorage.getItem("LinkedIn")
+  const storedLocation = sessionStorage.getItem("Location")
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
-    name: "Apeksha D Ankola",
-    phone: "+91 1234567891",
-    location: "Bengaluru Karnataka",
-    github: "https://github.com/apeksha-ankola",
-    linkedin: "https://www.linkedin.com/in/apeksha-d-ankola/",
+    fullName: storedName || "Name",
+    phone: storedPhone || "+91 1234567891",
+    location: storedLocation || "City Name",
+    github: storedGithub || "Github Account URL",
+    linkedin: storedLinkedin || "LinkedIn Profile URL",
   });
+
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    // Set username from localStorage if it exists
+    // const storedUsername = sessionStorage.getItem("username");
+    if (!storedUsername) {
+      setMessage("Username not found in local storage. Please log in.");
+    }
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProfileData({ ...profileData, [name]: value });
+    if (name === "fullName") {
+      sessionStorage.setItem("Name", value);
+    } else if (name === "phone") {
+      sessionStorage.setItem("Phone", value);
+    } else if (name === "github") {
+      sessionStorage.setItem("Github", value);
+    } else if (name === "linkedin") {
+      sessionStorage.setItem("LinkedIn", value);
+    } else if (name === "location") {
+      sessionStorage.setItem("Location", value);
+    }
   };
 
   const handleEditClick = () => {
     setIsEditing(true);
+    setMessage("");
   };
 
-  const handleSaveClick = () => {
+  const handleSaveClick = async () => {
     setIsEditing(false);
-    console.log("Saved Profile Data:", profileData);
+  
+    if (!storedUsername) {
+      setMessage("Username not found in local storage. Cannot update profile.");
+      return;
+    }
+  
+    try {
+      const formData = {
+        username: storedUsername,
+        ...profileData,
+      };
+  
+      // Correct axios POST request
+      const response = await axios.post("http://127.0.0.1:5000/profile", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      // Handle success or error
+      if (response.data.success) {
+        setMessage(response.data.message);
+        // console.log(response.data.user)
+      } else {
+        setMessage(response.data.message || "Failed to update profile.");
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      setMessage("An error occurred. Please try again later.");
+    }
   };
+  
 
   return (
     <div className="profile-container">
       {/* Header Section */}
       <header className="profile-header">
-        <h1>Welcome, {profileData.name}</h1>
+        <h1>Welcome, {profileData.fullName}</h1>
         <p>Your personalized job-matching assistant</p>
       </header>
 
@@ -41,7 +100,7 @@ const Profile = () => {
             alt="Profile"
             className="profile-image"
           /> */}
-          {/* <h2>{profileData.name}</h2> */}
+          {/* <h2>{profileData.fullName}</h2> */}
           {!isEditing && (
             <button className="edit-profile-btn" onClick={handleEditClick}>
               Edit Profile
@@ -54,7 +113,7 @@ const Profile = () => {
       <section className="personal-info">
         <h2>Personal Information</h2>
         <div className="info-list">
-          {["name", "phone", "location","github", "linkedin" ].map(
+          {["fullName", "phone", "location", "github", "linkedin"].map(
             (field) => (
               <div className="info-item" key={field}>
                 <span>{field.replace(/^\w/, (c) => c.toUpperCase())}:</span>
@@ -80,6 +139,9 @@ const Profile = () => {
           Save Changes
         </button>
       )}
+
+      {/* Message Section */}
+      {message && <p className="update-message">{message}</p>}
 
       {/* Resume Upload Section */}
       {/* <section className="profile-resume">

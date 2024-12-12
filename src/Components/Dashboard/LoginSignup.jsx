@@ -37,50 +37,57 @@ const LoginSignup = ({ setIsAuthenticated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
+  
     const endpoint = isLoginActive
       ? `${BASE_URL}/login`
       : `${BASE_URL}/signup`;
-
+  
     const payload = {
       username: formData.userName,
       password: formData.password,
     };
-
+  
     if (!isLoginActive) {
       payload.name = formData.name;
       payload.location = formData.location;
       payload.phone = formData.phone;
       payload.email = formData.email;
     }
-
+  
     try {
       const response = await axios.post(endpoint, payload, { 
         withCredentials: true 
       });
-      console.log(response);
-    
+  
       if (response.status === 200 || response.status === 201) {
         const data = response.data;
         
         // Update session storage and state
         sessionStorage.setItem('username', data.username);
         sessionStorage.setItem('isLoggedIn', 'true');
+        if (data.userData && data.userData.profile) {
+          sessionStorage.setItem("Name", data.userData.profile.name);
+          sessionStorage.setItem("Phone", data.userData.profile.phone);
+          sessionStorage.setItem("Location", data.userData.profile.location);
+          sessionStorage.setItem("Github", data.userData.profile.github);
+          sessionStorage.setItem("LinkedIn", data.userData.profile.linkedin);
+          sessionStorage.setItem("Email",data.userData.email);
+        }
+        
         setIsAuthenticated(true);
-    
-        // Redirect to home page
-        navigate('/');
+  
+        // Redirect to the home page or another page after successful signup/login
+        navigate('/');  // Make sure this is the correct path
       }
     } catch (error) {
       if (error.response) {
-        // Check if the response contains a 401 status and display the message
         if (error.response.status === 401) {
-          alert(error.response.data.message); // Show the backend message for 401 error
+          alert(error.response.data.message);
         } else {
           setError(error.response.data.message || 'An error occurred');
         }
         if (error.response.status === 409) {
-          alert(error.response.data.message); // Show the backend message for 401 error
+          alert(error.response.data.message);
         } else {
           setError(error.response.data.message || 'An error occurred');
         }
@@ -89,8 +96,8 @@ const LoginSignup = ({ setIsAuthenticated }) => {
       }
       console.error('Error during request:', error);
     }
-    
   };
+  
 
   // const handleSubmit = (e) => {
   //   e.preventDefault();

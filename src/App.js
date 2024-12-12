@@ -50,12 +50,12 @@ const App = () => {
 
   // Check if user is logged in on component mount
   useEffect(() => {
-    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const loggedIn = sessionStorage.getItem("isLoggedIn") === "true";
     setIsAuthenticated(loggedIn);
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
+    sessionStorage.clear();
     setIsAuthenticated(false);
      // Update state to trigger UI change
   };
