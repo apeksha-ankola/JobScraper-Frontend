@@ -3,16 +3,19 @@
   display: flex;
   justify-content: center;
   margin: 2rem 0;
+  padding: 0;
 }
 
 /* Grid Layout for Job Cards */
 .job-cards-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Four cards in a row */
+  /* grid-template-columns: repeat(4, 1fr);  */
+  /* Four cards in a row */
   gap: 1.5rem; /* Space between cards */
   width: 90%;
   max-width: 1200px;
   padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 /* Individual Job Card Styling */
