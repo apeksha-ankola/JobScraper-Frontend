@@ -33,16 +33,10 @@ body {
 
 .search-wrapper {
   position: relative;
-  width: 60%;
+  width: 90%;
   margin: 0 auto 1rem;
 }
 
-/* .search-container h2 {
-  font-size: 1.5rem;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #1f509a;
-} */
 .search-bar {
   width: 100%;
   padding: 0.8rem;
