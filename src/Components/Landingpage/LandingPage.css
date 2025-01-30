@@ -54,6 +54,14 @@ button:hover {
   color: #1F509A; /* Text color for "no jobs found" message */
 }
 
+.time-taken-message {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1em;
+  color: #002194; /* Match your theme color */
+  font-weight: bold;
+}
+
 @media (max-width: 480px) {
   .search-container h2 {
     font-size: 1.2rem;
