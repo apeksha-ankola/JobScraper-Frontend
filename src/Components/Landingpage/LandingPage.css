@@ -14,13 +14,22 @@ body {
 .search-container {
   text-align: center;
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .search-container h2 {
   font-size: 1.5rem;
   margin-bottom: 20px;
   color: #1f509a;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
+
 
 .search-wrapper {
   position: relative;
@@ -28,13 +37,19 @@ body {
   margin: 0 auto 1rem;
 }
 
+/* .search-container h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1f509a;
+} */
 .search-bar {
   width: 100%;
   padding: 0.8rem;
   font-size: 1rem;
   border: 1px solid #0A3981;
   border-radius: 10px;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
 }
 
 .search-bar:focus {
@@ -73,7 +88,8 @@ body {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 button {

@@ -3,7 +3,6 @@ import JobCards from "../JobCards/JobCards";
 import "./LandingPage.css";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import axios from "axios";
-import { LiaLinkedin } from "react-icons/lia";
 
 const LandingPage = ({ setView }) => {
   // Predefined list of job roles
