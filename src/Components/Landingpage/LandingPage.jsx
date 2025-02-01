@@ -41,6 +41,7 @@ const LandingPage = ({ setView }) => {
   const [jobs, setJobs] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [timeTaken, setTimeTaken] = useState(null);
 
   // Handle input changes with autocomplete
   const handleInputChange = (e) => {
@@ -134,6 +135,8 @@ const LandingPage = ({ setView }) => {
   const fetchJobs = async (type) => {
     setLoading(true);
     setView("loading");
+    const startTime = performance.now();
+    setTimeTaken(null);
 
     try {
       const encodedType = encodeURIComponent(type);
@@ -155,6 +158,10 @@ const LandingPage = ({ setView }) => {
       console.error("Error fetching jobs:", error);
       setJobs([]);
     } finally {
+      const endTime = performance.now();
+      const duration = (endTime - startTime) / 1000; // Convert to seconds
+      setTimeTaken(duration.toFixed(2)); // Update state
+
       setLoading(false);
       setView("results");
     }
@@ -162,6 +169,7 @@ const LandingPage = ({ setView }) => {
 
   // Fetch Internships
   const fetchInternships = async (type) => {
+    const startTime = performance.now(); 
     setLoading(true);
     setView("loading");
 
@@ -185,6 +193,9 @@ const LandingPage = ({ setView }) => {
       console.error("Error fetching internships:", error);
       setJobs([]);
     } finally {
+      const endTime = performance.now();
+      const duration = (endTime - startTime) / 1000; // Convert to seconds
+      setTimeTaken(duration.toFixed(2)); // Update state
       setLoading(false);
       setView("results");
     }
@@ -235,6 +246,12 @@ const LandingPage = ({ setView }) => {
             </button>
           </div>
         </div>
+      )}
+      {/* Display time taken after search */}
+      {timeTaken !== null && (
+        <p className="time-taken-message">
+          YOUR SEARCH TOOK {timeTaken} SECONDS
+        </p>
       )}
 
       {jobs.length > 0 && (
