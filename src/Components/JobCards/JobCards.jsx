@@ -8,10 +8,17 @@ const JobCards = ({ jobs, handleGenerateCoverLetter, handleGenerateResume }) => 
   const [disabled, setDisabled] = useState(false);
 
   const handleClick = (job, type) => {
+    // Check if the profile section is filled
+    const storedName = sessionStorage.getItem("Name");
+    if (!storedName) {
+      alert("Please fill the profile section first.");
+      return;
+    }
+
     if (disabled) return;
     setDisabled(true);
     setLoadingJobIndex(job);
-    
+
     if (type === "coverLetter") {
       handleGenerateCoverLetter(job);
     } else {
