@@ -108,7 +108,8 @@ const LandingPage = ({ setView }) => {
       company_name: job.company,
       github: storedGithub,
       email: storedEmail,
-      linkedin: storedLinkedin
+      linkedin: storedLinkedin,
+      phone: storedPhone
     };
 
     try {
