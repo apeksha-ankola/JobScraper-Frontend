@@ -94,6 +94,23 @@
 .icon-btn:hover {
   color: rgb(9, 199, 247); /* Matches the link color on hover */
 }
+.spinner {
+  border: 5px solid #AEE9FF;
+  border-top: 5px solid #002194;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /* Responsive Design */
 @media (max-width: 992px) {
