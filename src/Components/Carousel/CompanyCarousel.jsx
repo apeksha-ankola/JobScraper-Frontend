@@ -4,15 +4,16 @@ import "./CompanyCarousel.css";  // Optional, for additional styling
 
 const CompanyCarousel = () => {
   const logos = [
-    "https://magnasys.tv/wp-content/uploads/2024/04/synamedia-logo-black-rgb.png", // Replace with actual logo URLs
     "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Maersk_Group_Logo.svg/640px-Maersk_Group_Logo.svg.png",
     "https://asia-risk-directory.eb8.infopro-insight.com/sites/default/files/styles/free_crop/public/2022-01/Surya.png.webp?itok=iEH-Hwx-",
-    "https://upload.wikimedia.org/wikipedia/commons/1/1c/Accenture_logo.svg",
-    "https://companieslogo.com/img/orig/MPHASIS.NS_BIG-96e12b36.png?t=1720244492",
-    "https://www.connectwise.com/globalassets/media/logos/company-logos/mdtm/connectwise-horiz-master.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Tata_Consultancy_Services_Logo.svg/2560px-Tata_Consultancy_Services_Logo.svg.png",
+    "https://www.baryonssoftsolutions.com/wp-content/uploads/2022/06/Dark-Logo.png",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Cognizant_logo_2022.svg/2560px-Cognizant_logo_2022.svg.png",
     "https://www.ltimindtree.com/wp-content/uploads/2022/10/LTIMindtree_Linear_2-1-LT-Blue-1-1.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Cognizant_logo_2022.svg/2560px-Cognizant_logo_2022.svg.png"
+    "https://companieslogo.com/img/orig/MPHASIS.NS_BIG-96e12b36.png?t=1720244492",
+    "https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/onmlxboetufjolkz925o",
+    "https://companieslogo.com/img/orig/MMS_BIG-85bca374.png?t=1720244492",
+    "https://upload.wikimedia.org/wikipedia/commons/1/1c/Accenture_logo.svg",
+    
     // Add more logos as needed
   ];
 
