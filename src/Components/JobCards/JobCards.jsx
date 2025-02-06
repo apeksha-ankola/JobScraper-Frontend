@@ -28,7 +28,7 @@ const JobCards = ({ jobs, handleGenerateCoverLetter, handleGenerateResume }) => 
     setTimeout(() => {
       setDisabled(false);
       setLoadingJobIndex(null);
-    }, 3000);
+    }, 10000);
   };
 
   return (
